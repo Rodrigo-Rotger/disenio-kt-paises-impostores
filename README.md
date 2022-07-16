@@ -40,7 +40,6 @@ paisesLimitrofes: [argentina, brasil, chile, paraguay, peru]
 bloquesRegionales: ["UNASUR"]
 idiomasOficiales: ["Español", "Quechua", "Aymara"]
 ```
-
 ## Requerimientos
 
 Dividimos los requerimientos en varias etapas distintas, cuyo orden debe ser respetado. El ejercicio está planteado de esta manera para que el diseño les quede más prolijo y desacoplado.
