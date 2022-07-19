@@ -71,13 +71,13 @@ class Observatorio private constructor() {
         var africa = cantidadPorContinente("africa", plurinacionales)
         var oceania = cantidadPorContinente("oceania", plurinacionales)
 
-        val list = plurinacionales.groupingBy { it.continenete }.eachCount().filter { it.value > 1 }
+        //val list = plurinacionales.groupingBy { it.continente }.eachCount().filter { it.value > 1 }
 
     }
 
     //AUXILIAR
-    fun cantidadPorContinente(nombre: String, listaPaises: List<Pais>): Int {
-        return listaPaises.filter { it.continenete == nombre }.size
+    fun cantidadPorContinente(nombre: String, listaPaises: List<Pais>){
+        //return listaPaises.filter { it.continenete == nombre }.size
     }
 
 }

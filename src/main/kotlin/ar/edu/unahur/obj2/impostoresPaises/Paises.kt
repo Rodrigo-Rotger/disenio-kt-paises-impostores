@@ -3,7 +3,7 @@ package ar.edu.unahur.obj2.impostoresPaises
 import kotlin.math.roundToInt
 import kotlin.math.roundToLong
 
-class Pais (val nombre: String, val codigoISO: String, val poblacion: Int, val superficie: Double, val continenete: String,
+class Pais (val nombre: String, val codigoISO: String, val poblacion: Int, val superficie: Double, val continente: String,
             val moneda: String, val dolar: Double, val  bloqueReg: List<String>, val idiomas: List<String>  ){
 
     val limitrofes: MutableList<Pais> = mutableListOf()
