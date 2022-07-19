@@ -3,7 +3,7 @@ package ar.edu.unahur.obj2.impostoresPaises
 import kotlin.math.roundToInt
 import kotlin.math.roundToLong
 
-class Pais (val nombre: String, val CodigoISO: String, val poblacion: Int, val superficie: Double, val continenete: String,
+class Pais (val nombre: String, val codigoISO: String, val poblacion: Int, val superficie: Double, val continenete: String,
             val moneda: String, val dolar: Double, val  bloqueReg: List<String>, val idiomas: List<String>  ){
 
     val limitrofes: MutableList<Pais> = mutableListOf()
@@ -32,5 +32,4 @@ class Pais (val nombre: String, val CodigoISO: String, val poblacion: Int, val s
     fun aCuantoEquivale(monto: Double, pais: Pais ): Double = (monto/dolar) * pais.dolar
 
     fun agregarLimitrofes(listaPaises: List<Pais>) = limitrofes.addAll(listaPaises)
-
 }
