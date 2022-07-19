@@ -21,7 +21,11 @@ val list = mutableListOf(Argentina, Bolivia, EstadosUnidos, Brasil)
 //val listaPlurinacionales = list.filter { p -> p.esPlurinacional()}
 val ordenados = list.groupBy { p->p.continente }
 
-val prueba = list.groupingBy { it.continente }.eachCount().max
+val prueba = list.groupingBy { it.continente }.eachCount()
+
+val prueba2 = prueba.maxByOrNull { it.value }
 
 //ordenados
 prueba
+
+prueba2

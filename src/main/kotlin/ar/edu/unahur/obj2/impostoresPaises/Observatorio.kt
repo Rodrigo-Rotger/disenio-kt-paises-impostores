@@ -17,7 +17,7 @@ class Observatorio private constructor() {
     //agregar pais
     fun agregarPais(pais: Pais) = paises.add(pais)
 
-    //Obtener pais
+    //Obtener pais a traves del nombre
     fun paisPorNombre(nombre: String): Pais = paises.filter{ it.nombre == nombre }[0]
 
     fun sonLimitrofes(nombrePais1: String, nombrePais2: String): Boolean {
@@ -49,7 +49,7 @@ class Observatorio private constructor() {
         return pais1.convieneIrDeCompras(pais2)
     }
 
-    //entendemos que el primer parametro es el pais que "consulta" el monto en la moneda del segundo parametro
+    //entendemos que el primer parametro es el pais que "consulta" el monto en la moneda del pais del segundo parametro
     fun aCuantoEquivale(nombrePais1: String, monto:Double, nombrePais2: String ): Double {
         val pais1 = this.paisPorNombre(nombrePais1)
         val pais2 = this.paisPorNombre(nombrePais2)
@@ -57,27 +57,27 @@ class Observatorio private constructor() {
         return pais1.aCuantoEquivale(monto, pais2)
     }
 
-    fun ISOMayorDensidadPoblacional(): List<String> {
+    fun isoMayorDensidadPoblacional(): List<String> {
         val ordenados = paises.sortedByDescending { it.densidadPoblacional() }
         val iso = ordenados.map { it.codigoISO }
         return iso.take(4)
     }
 
-    fun continenteMasPlurinacional() {
-        var plurinacionales = paises.filter { p -> p.esPlurinacional() }
-        var america = cantidadPorContinente("america", plurinacionales)
-        var europa = cantidadPorContinente("europa", plurinacionales)
-        var asia = cantidadPorContinente("asia", plurinacionales)
-        var africa = cantidadPorContinente("africa", plurinacionales)
-        var oceania = cantidadPorContinente("oceania", plurinacionales)
+    fun continenteMasPlurinacional(): String? {
+        val plurinacionales = paises.filter { it.esPlurinacional() }
+        val agrupados = plurinacionales.groupingBy { it.continente }.eachCount()
+        val contineneteMasPlu = agrupados.maxByOrNull { it.value }?.key
 
-        //val list = plurinacionales.groupingBy { it.continente }.eachCount().filter { it.value > 1 }
-
+       return contineneteMasPlu
     }
 
-    //AUXILIAR
-    fun cantidadPorContinente(nombre: String, listaPaises: List<Pais>){
-        //return listaPaises.filter { it.continenete == nombre }.size
+    fun promedioDensidadInsulares(): Int {
+        val insulares = paises.filter { it.esIsla()}
+        val promedioDensidad = insulares.sumOf { it.densidadPoblacional() } / insulares.size
+
+        return promedioDensidad
     }
+
+
 
 }

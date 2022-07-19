@@ -13,19 +13,21 @@ class Pais (val nombre: String, val codigoISO: String, val poblacion: Int, val s
     fun esIsla(): Boolean = limitrofes.isEmpty()
 
     fun densidadPoblacional(): Int = (poblacion/superficie).roundToInt()
-
+    //// NO ES MEJOR USAR maxByOrNull???
     fun vecinoMasPoblado(): Pais {
         val vecindad = mutableListOf(this)
         vecindad.addAll(limitrofes)
-        val vecindadOrdenada = vecindad.sortedByDescending { p -> p.poblacion }
+        val vecindadOrdenada = vecindad.sortedByDescending { it.poblacion }
 
         return vecindadOrdenada.first()
     }
     fun sonLimitrofes(pais:Pais): Boolean = limitrofes.contains(pais)
 
     fun necesitanTraduccion(pais:Pais): Boolean = idiomas.intersect(pais.idiomas).isEmpty()
+    //AGREGUE FUNCION QUEDA MAS PROLIJO
+    fun sonMismoBloqueReg(pais:Pais) : Boolean = bloqueReg.intersect(pais.bloqueReg).isNotEmpty()
 
-    fun sonPotencialesAliados(pais: Pais): Boolean =  !necesitanTraduccion(pais) && bloqueReg.intersect(pais.bloqueReg).isNotEmpty()
+    fun sonPotencialesAliados(pais: Pais): Boolean =  !necesitanTraduccion(pais) && sonMismoBloqueReg(pais)
 
     fun convieneIrDeCompras(pais: Pais): Boolean = pais.dolar > dolar
 
