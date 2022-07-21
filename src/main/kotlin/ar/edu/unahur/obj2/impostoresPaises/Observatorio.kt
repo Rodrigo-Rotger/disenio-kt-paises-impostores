@@ -47,8 +47,7 @@ class Observatorio() {
         return pais1.convieneIrDeCompras(pais2)
     }
 
-    //entendemos que el primer parametro es el pais que "consulta" el monto en la moneda del pais del segundo parametro
-    fun aCuantoEquivale(nombrePais1: String, monto:Double, nombrePais2: String ): Double {
+    fun aCuantoEquivaleEn(nombrePais1: String, monto:Double, nombrePais2: String ): Double {
         val pais1 = paisPorNombre(nombrePais1)
         val pais2 = paisPorNombre(nombrePais2)
 
@@ -58,6 +57,7 @@ class Observatorio() {
     fun isoMayorDensidadPoblacional(): List<String> {
         val ordenados = paises.sortedByDescending { it.densidadPoblacional() }
         val iso = ordenados.map { it.codigoISO }
+
         return iso.take(5)
     }
 
